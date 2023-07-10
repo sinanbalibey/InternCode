@@ -15,6 +15,7 @@ public class Menu {
         boolean devam = true;
 
         while (devam) {
+            System.out.println();
             System.out.println("Kutu oluşturma sistemine hoş geldiniz ");
             System.out.println("1 : Kutu İşlemleri");
             System.out.println("2 : Çıkış");
@@ -42,11 +43,12 @@ public class Menu {
     }
 
     public void kutuIslemleri() {
-
+        System.out.println();
         System.out.println("Kendi kutunuzu oluşturma için 1");
         System.out.println("Hazır kutu oluşturmak için 2 ");
         System.out.println("Kutuları listelemek için 3 ");
-        System.out.println("Kutu içeriğini görmek için 4 ");
+        System.out.println("Kutuları id ye göre listelemek için 4 ");
+        //System.out.println("Kutu içeriğini görmek için 4 ");
 
 
         int secim = scan.nextInt();
@@ -61,9 +63,15 @@ public class Menu {
                 hazirKutuOlustur();
                 kutuIslemleri();
 
+
             case 3:
                 kutulariListele();
                 break;
+
+            case 4:
+                idSirala();
+                break;
+
            /* case 4:
                 kutuDetayList();*/
 
@@ -101,14 +109,13 @@ public class Menu {
         System.out.println("Kutu olutşturuldu ID:" + kutu.getId());
 
     }
+
     public void hazirKutuOlustur(){
         Kutu kutu=new Kutu();
 
         kutular.add(kutu);
         System.out.println("Kutu oluşturuldu ID:"+kutu.getId());
     }
-
-
 
 
     public void kutulariListele() {
@@ -124,14 +131,39 @@ public class Menu {
         }
     }
 
+    public void idSirala(){
+        System.out.println("Kutu id'sini giriniz");
+
+        int id=scan.nextInt();
+        scan.nextLine();
+
+        Kutu kutu=null;
+
+        for(Kutu k:kutular){
+            if(k.getId()==id){
+                kutu=k;
+                break;
+            }
+        }
+        if(kutu!=null){
+            kutu.kutuBilgiGoster();
+        }
+        else {
+            System.out.println("Belirtilen id ye göre bir kutu yok");
+        }
+    }
+
+
    /* public void kutuDetayList(){
         System.out.println("Kutu ID'sini giriniz");
         int secim=scan.nextInt();
         scan.nextLine();
-        System.out.println(n);
+        System.out.println(  );
+        }
+        */
 
 
-    }*/
+
 
 
 }

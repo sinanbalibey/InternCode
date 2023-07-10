@@ -1,6 +1,6 @@
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
-import java.util.Objects;
+
 
 public class Kutu {
     private static int nextId = 1;
@@ -12,7 +12,7 @@ public class Kutu {
     private String renk;
 
 
-    private ArrayList<Object> nesneler = new ArrayList<>();
+    private ArrayList<ArrayList<Object>> nesneler = new ArrayList<>();
 
 
     public Kutu(int genislik, int yukseklik, int en, String renk) {
@@ -37,55 +37,43 @@ public class Kutu {
         return id;
     }
 
-  /*  public void setId(int id) {
-        this.id = id;
-    }*/
+
 
     public int getYukseklik() {
         return yukseklik;
     }
 
-  /*  public void setYukseklik(int yukseklik) {
-        this.yukseklik = yukseklik;
-    }*/
+
 
     public int getGenislik() {
         return genislik;
     }
 
-  /*  public void setGenislik(int genislik) {
-        this.genislik = genislik;
-    }*/
+
 
     public int getEn() {
         return en;
     }
 
-   /* public void setEn(int en) {
-        this.en = en;
-    }*/
+
 
     public int getHacim() {
         return genislik * yukseklik * en;
     }
 
-   /* public void setHacim(int hacim) {
-        this.hacim = hacim;
-    }*/
+
 
     public String getRenk() {
         return renk;
     }
 
-    /*public void setRenk(String renk) {
-        this.renk = renk;
-    }*/
 
-    public void kutuDoldur(String nesne) {
+
+    /*public void kutuDoldur(String nesne) {
 
         hacim -= 100;
         nesneler.add(nesne);
-    }
+    }*/
 
    /* public void kutuBosalt(String nesne) {
         nesneler.remove()
@@ -99,8 +87,10 @@ public class Kutu {
         System.out.println("Renk: "+renk);
         System.out.println("Kutu İçendeki Nesneler");
 
-        for (Object nesne:nesneler){
-            System.out.print(nesne+" ");
+        for(ArrayList<Object> nesneListesi:nesneler){
+            for(Object nesne :nesneListesi){
+                System.out.println(nesne);
+            }
         }
 
         System.out.println();
