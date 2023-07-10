@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class Validator {
+public class Validator {
+    public <T extends IEntity> void validate(T entity){
+
+    }
 }
