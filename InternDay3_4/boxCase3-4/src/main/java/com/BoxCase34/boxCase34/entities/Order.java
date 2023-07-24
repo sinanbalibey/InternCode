@@ -2,7 +2,11 @@ package com.BoxCase34.boxCase34.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,12 +25,13 @@ public class Order {
 	    private Long id;
 
 	    
-	    @ManyToOne
+		@JsonIgnore
+	    @ManyToOne(fetch = FetchType.LAZY)
 	    @JoinColumn(name = "user_id")
 	    private User user;
 
-	    
-	    @OneToMany(mappedBy = "order")
+	    @JsonProperty()
+	    @OneToMany(mappedBy = "order",fetch = FetchType.EAGER)
 	    private List<Box> boxes;
 	
 	

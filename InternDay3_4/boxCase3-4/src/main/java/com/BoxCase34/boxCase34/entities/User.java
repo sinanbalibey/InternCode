@@ -2,7 +2,11 @@ package com.BoxCase34.boxCase34.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,7 +19,7 @@ import lombok.Data;
 @Data
 public class User {
 
-	
+	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -30,6 +34,7 @@ public class User {
 	
 	private String email;
 	
-	@OneToMany(mappedBy = "user")
+	@JsonProperty
+	@OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
 	private List<Order> orders;
 }
