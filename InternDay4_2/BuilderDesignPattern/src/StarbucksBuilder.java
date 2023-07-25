@@ -1,4 +1,4 @@
-public class Starbucks {
+public class StarbucksBuilder {
 
     //Gerekli
     private  String kahveBoyutu;
@@ -7,6 +7,7 @@ public class Starbucks {
     //Seçime göre değişir.
     private String laktozsuzSutMiktari;
     private String yumusatici;
+
 
 
     public static class Builder{
@@ -30,7 +31,17 @@ public class Starbucks {
             return this;
         }
 
-        public Star
+        public StarbucksBuilder build(){
+            return  new StarbucksBuilder(this);
+        }
+    }
+
+
+    public StarbucksBuilder(Builder builder) {
+        kahveBoyutu=builder.kahveBoyutu;
+        laktozsuzSutMiktari=builder.laktozsuzSutMiktari;
+        yumusatici=builder.yumusatici;
+
     }
 
 }
