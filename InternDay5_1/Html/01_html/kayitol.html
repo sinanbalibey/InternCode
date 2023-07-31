@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Lütfen Formu Eksiksiz Doldurunuz.</h1>
+    <hr />
+
+    <h2>Hesap Bilgileriniz</h2>
+    <table>
+      <tr>
+        <td><label for="username">Kullanıcı Adı:</label></td>
+
+        <td>
+          <input
+            type="text"
+            id="username"
+            placeholder="Kullanıcı adı giriniz"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td><label for="eposta">Eposta:</label></td>
+
+        <td><input type="email" id="eposta" placeholder="Eposta giriniz" /></td>
+      </tr>
+      <tr>
+        <td><label for="parola">Parola:</label></td>
+
+        <td>
+          <input type="password" id="parola" placeholder="Parola giriniz" />
+        </td>
+      </tr>
+    </table>
+    <h2>Kişisel Bilgileriniz</h2>
+    <table>
+      <tr>
+        <td><label for="name">Adınız:</label></td>
+
+        <td><input type="text" id="name" placeholder="Ad giriniz" /></td>
+      </tr>
+      <tr>
+        <td><label for="surname">Soyadınız:</label></td>
+
+        <td><input type="text" id="surName" placeholder="Soyad giriniz" /></td>
+      </tr>
+      <tr>
+        <td><label for="cities">Şehir:</label></td>
+
+        <td>
+          <select id="cities">
+            <option value="23">Elazığ</option>
+            <option value="44">Malatya</option>
+            <option value="62">Tunceli</option>
+            <option value="06">Ankara</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="gender">Cinsiyet: </label></td>
+        <td>
+          <input type="radio" name="gender" id="erkek" />Erkek
+          <input type="radio" name="gender" id="kadin" />Kadın
+        </td>
+      </tr>
+      <tr>
+        <td><label for="hobi">Hobileriniz:</label></td>
+        <td><input type="checkbox" id="hobi" />Sinema</td>
+        <td><input type="checkbox" id="hobi" />Gezmek</td>
+        <td><input type="checkbox" id="hobi" />Spor</td>
+        <td><input type="checkbox" id="hobi" />Sinema</td>
+      </tr>
+    </table>
+  </body>
+</html>
