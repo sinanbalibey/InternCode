@@ -34,6 +34,8 @@ public class User {
 	
 	private String email;
 	
+	private String password;
+	
 	@JsonProperty
 	@OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
 	private List<Order> orders;

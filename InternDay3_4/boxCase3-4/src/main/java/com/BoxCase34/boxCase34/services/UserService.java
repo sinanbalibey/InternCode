@@ -25,6 +25,10 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+	
 	public User saveOneUser(User newUser) {
 		
 		return userRepository.save(newUser);
@@ -47,6 +51,7 @@ public class UserService {
 			foundUser.setTelefon(newUser.getTelefon());
 			foundUser.setAddress(newUser.getAddress());
 			foundUser.setEmail(newUser.getEmail());
+			foundUser.setPassword(newUser.getPassword());
 
 			userRepository.save(foundUser);
 			
