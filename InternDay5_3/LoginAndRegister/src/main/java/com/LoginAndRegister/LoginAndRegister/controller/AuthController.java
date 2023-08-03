@@ -39,7 +39,7 @@ public class AuthController {
 		
 		 User existingUser=userService.findUserByEmail(userDto.getEmail());
 		 
-		 if(existingUser!=null&& existingUser)
+		 //if(existingUser!=null&& existingUser)
 		 
 		 return "a";
 	 }

@@ -29,10 +29,10 @@ public class UserService {
 		return userRepository.save(user);
 	}
 	
-	public User checkLogin(String username,String password) {
+	/*public User checkLogin(String username,String password) {
 		
-		User user=userRepository.findby
-	}
+		//User user=userRepository.findby
+	}*/
 	
 	
 }
