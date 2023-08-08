@@ -23,6 +23,7 @@ public class Document {
     private Double documentSize;
 
     @ManyToOne
+    @JoinColumn(name="owner_id")
     private User documentOwner;
 
     private Long documentWordSize;

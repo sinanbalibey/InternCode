@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,4 +25,7 @@ public class User {
     private String mail;
 
     private String password;
+
+    @OneToMany(mappedBy = "documentOwner")
+    private List<Document> documents;
 }

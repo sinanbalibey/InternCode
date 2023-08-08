@@ -31,16 +31,17 @@
           <h1>PDF Yükleme Sitesi</h1>
           <div><h3>Yüklenecek Pdf i Seçiniz</h3></div>
           <form
+                  id="uploadForm"
             action="/v1/document/upload"
             method="post"
             enctype="multipart/form-data"
           >
-            <label for="pdfFile">PDF dosyanızı seçin:</label>
-            <input type="file" id="pdfFile" name="pdfFile" accept=".pdf" />
-            <input type="submit" value="Yükle" />
+            <label for="file">Select a PDF file:</label>
+            <input type="file" name="file" accept=".pdf" required>
+            <button type="submit">Calculate Word Count</button>
           </form>
           <div>
-            <p>Kelime Sayısı : <span id="wordCount">0</span></p>
+            <p id="wordCount">Word Count: <span id="count">0</span></p>
           </div>
         </div>
         <div class="col-sm-2" style="background-color: #f29727">
@@ -52,20 +53,26 @@
       </div>
     </div>
     <script>
-      const form = document.querySelector("form");
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        fetch(form.action, {
-          method: "POST",
-          body: formData,
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            document.getElementById("wordCount").innerText = data.wordCount;
-          })
-          .catch((error) => console.error("Hata:", error));
-      });
+          document.querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            try {
+                const response = await fetch('/v1/document/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    document.querySelector('#count').textContent = data;
+                } else {
+                    console.error('Error calculating word count');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
