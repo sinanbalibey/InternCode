@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>SinBa Company Ana Sayfa</title>
 </head>
 <body>
-$END$
+    <h2>SinBa Ana Sayfası Hellooo</h2>
+    <hr>
+    <p>Sinan Balıbey Şirketinin anasayfasına hoşgeldiniz. İyisin Dostum</p>
+
+    <hr>
+        <p>
+            Kullanıcı Adı: <span sec:authentication="principal.username"></span>
+            <br><br>
+            Rolü: <span sec:authentication="principal.authorities"></span>
+
+        </p>
+    <hr>
+
+    <div sec:authorize="hasRole('MANAGER')">
+    <!--bu sadece  manager lar için-->
+         <p>
+             <a th:href="@{/leaders}">Manager lar Toplantısı</a>
+             (Sadece Manager Rolündekiler için)
+         </p>
+    </div>
+    <div sec:authorize="hasRole('ADMIN')">
+        <!-- burası sadece adminler için-->
+        <hr>
+        <p>
+            <a th:href="@{/systems}">Adminler Toplantısı</a>
+            (Sadece Admin Rolündekiler için)
+        </p>
+    </div>
+
+    <form action="#" th:action="@{/logout}" method="POST">
+
+        <input type="submit" value="Çıkış Yap" />
+    </form>
+
 </body>
 </html>
