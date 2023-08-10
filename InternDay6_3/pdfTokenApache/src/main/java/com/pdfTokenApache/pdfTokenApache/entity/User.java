@@ -39,11 +39,17 @@ public class User  implements UserDetails {
     @Column(name = "password",nullable = false)
     private String password;
 
+    @Column(name = "mobile",unique = true)
+    private String mobile;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
     @Column(name="enabled")
     private Boolean enabled=true;
+
+    @Column(name = "enabled")
+    private Boolean locked=false;
 
 
     @Override
@@ -69,16 +75,16 @@ public class User  implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return !locked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return enabled;
     }
 }
