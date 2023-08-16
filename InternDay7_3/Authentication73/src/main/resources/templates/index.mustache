@@ -1,0 +1,43 @@
+
+
+
+<h3>Kullanici Profili</h3>
+<ul>
+    <li>Kullanici Adı: {{authentication.name}}</li>
+    <li>Yetkiler: {{authentication.authorities}}</li>
+</ul>
+<form action="/logout" method="post">
+    <input type="hidden" name="{{_csrf.parameterName}}"
+           value="{{_csrf.token}}">
+    <button type="submit">Logout</button>
+</form>
+
+<form action="/search" method="post">
+    <label for="value">Search:</label>
+    <input type="text" name="value">
+    <input type="hidden" name="{{_csrf.parameterName}}"
+           value="{{_csrf.token}}">
+    <button type="submit">Ara</button>
+</form>
+
+
+<form action="/new-video" method="post">
+    <input type="text" name="name">
+    <input type="text" name="description">
+    <input type="hidden" name="{{_csrf.parameterName}}"
+           value="{{_csrf.token}}">
+    <button type="submit">Gönder</button>
+</form>
+
+{{#videos}}
+    <li>
+        {{name}}
+        <form action="/delete/videos/{{id}}" method="post">
+            <input type="hidden"
+                   name="{{_csrf.parameterName}}"
+                   value="{{_csrf.token}}">
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+{{/videos}}
+
